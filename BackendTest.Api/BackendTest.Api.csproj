@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BackendTest.Command\BackendTest.Command.csproj" />
+    <ProjectReference Include="..\BackendTest.Domain\BackendTest.Domain.csproj" />
+    <ProjectReference Include="..\BackendTest.Query\BackendTest.Query.csproj" />
+    <ProjectReference Include="..\BackendTest.Utils\BackendTest.Utils.csproj" />
+  </ItemGroup>
+
+
+</Project>

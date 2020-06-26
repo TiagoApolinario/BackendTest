@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "BackendTest.Domain/1.0.0": {
+        "dependencies": {
+          "BackendTest.Utils": "1.0.0"
+        },
+        "runtime": {
+          "BackendTest.Domain.dll": {}
+        }
+      },
+      "BackendTest.Utils/1.0.0": {
+        "runtime": {
+          "BackendTest.Utils.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BackendTest.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BackendTest.Utils/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
