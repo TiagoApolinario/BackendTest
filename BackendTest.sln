@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendTest.Api", "BackendT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendTest.Utils", "BackendTest.Utils\BackendTest.Utils.csproj", "{9197A5FF-E722-4C9F-BE0E-6B05E2310EFC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{C55E092A-2DCA-427C-9E9C-BA6F05A11B41}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{E24038DE-8BDD-41B4-80F3-A6127061C217}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Users\tiago\Desktop\db-script.sql = ..\..\..\Users\tiago\Desktop\db-script.sql
+		db-script.sql = db-script.sql
 	EndProjectSection
 EndProject
 Global

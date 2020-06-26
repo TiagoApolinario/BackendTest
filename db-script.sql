@@ -1,0 +1,172 @@
+﻿USE [master]
+GO
+/****** Object:  Database [BackendTest]    Script Date: 26/06/2020 7:10:46 PM ******/
+CREATE DATABASE [BackendTest]
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [BackendTest].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [BackendTest] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [BackendTest] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [BackendTest] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [BackendTest] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [BackendTest] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [BackendTest] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [BackendTest] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [BackendTest] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [BackendTest] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [BackendTest] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [BackendTest] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [BackendTest] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [BackendTest] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [BackendTest] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [BackendTest] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [BackendTest] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [BackendTest] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [BackendTest] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [BackendTest] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [BackendTest] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [BackendTest] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [BackendTest] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [BackendTest] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [BackendTest] SET  MULTI_USER 
+GO
+ALTER DATABASE [BackendTest] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [BackendTest] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [BackendTest] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [BackendTest] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [BackendTest] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [BackendTest]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 26/06/2020 7:10:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Items]    Script Date: 26/06/2020 7:10:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Items](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](512) NOT NULL,
+ CONSTRAINT [PK_Items] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ItemStatus]    Script Date: 26/06/2020 7:10:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ItemStatus](
+	[Id] [uniqueidentifier] NOT NULL,
+	[StatusChangedDate] [datetime2](7) NOT NULL,
+	[ItemId] [uniqueidentifier] NOT NULL,
+	[StatusId] [uniqueidentifier] NULL,
+ CONSTRAINT [PK_ItemStatus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Status]    Script Date: 26/06/2020 7:10:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Status](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](512) NOT NULL,
+ CONSTRAINT [PK_Status] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20200626055750_Initial', N'3.1.5')
+INSERT [dbo].[Items] ([Id], [Name]) VALUES (N'73243a11-2360-4dfa-b69f-87ec77ad7924', N'Item 1')
+INSERT [dbo].[Items] ([Id], [Name]) VALUES (N'590223c8-428f-4555-914d-ebbe4528060d', N'Item 3')
+INSERT [dbo].[Items] ([Id], [Name]) VALUES (N'6c7256ae-5c8b-4821-af00-f8238813bf86', N'Item 2')
+INSERT [dbo].[ItemStatus] ([Id], [StatusChangedDate], [ItemId], [StatusId]) VALUES (N'bc048147-bccd-4b6e-91ef-2e8261cfde39', CAST(N'2020-01-06 00:00:00.0000000' AS DateTime2), N'590223c8-428f-4555-914d-ebbe4528060d', N'787ee483-aa83-49b6-8d56-cff14140571b')
+INSERT [dbo].[ItemStatus] ([Id], [StatusChangedDate], [ItemId], [StatusId]) VALUES (N'ec7771b7-e578-4dcb-8dc0-442d3a72043d', CAST(N'2020-01-04 00:00:00.0000000' AS DateTime2), N'590223c8-428f-4555-914d-ebbe4528060d', N'6a4eca50-13a5-4a1d-ad33-99a82877cd2f')
+INSERT [dbo].[ItemStatus] ([Id], [StatusChangedDate], [ItemId], [StatusId]) VALUES (N'02495e08-536e-4985-ab3b-5e787e28f415', CAST(N'2020-01-01 00:00:00.0000000' AS DateTime2), N'73243a11-2360-4dfa-b69f-87ec77ad7924', N'6a4eca50-13a5-4a1d-ad33-99a82877cd2f')
+INSERT [dbo].[ItemStatus] ([Id], [StatusChangedDate], [ItemId], [StatusId]) VALUES (N'5925ae54-c831-4fc6-afdb-7d1a9340806a', CAST(N'2020-01-02 00:00:00.0000000' AS DateTime2), N'6c7256ae-5c8b-4821-af00-f8238813bf86', N'6a4eca50-13a5-4a1d-ad33-99a82877cd2f')
+INSERT [dbo].[ItemStatus] ([Id], [StatusChangedDate], [ItemId], [StatusId]) VALUES (N'42622774-0a46-4610-a28f-e83bd13e3f50', CAST(N'2020-01-03 00:00:00.0000000' AS DateTime2), N'6c7256ae-5c8b-4821-af00-f8238813bf86', N'8c7babcf-9585-4ba7-b540-6feb02e44d9a')
+INSERT [dbo].[ItemStatus] ([Id], [StatusChangedDate], [ItemId], [StatusId]) VALUES (N'b8094503-585a-48ce-894d-f4ccf2951f64', CAST(N'2020-01-05 00:00:00.0000000' AS DateTime2), N'590223c8-428f-4555-914d-ebbe4528060d', N'8c7babcf-9585-4ba7-b540-6feb02e44d9a')
+INSERT [dbo].[Status] ([Id], [Name]) VALUES (N'8c7babcf-9585-4ba7-b540-6feb02e44d9a', N'B')
+INSERT [dbo].[Status] ([Id], [Name]) VALUES (N'6a4eca50-13a5-4a1d-ad33-99a82877cd2f', N'A')
+INSERT [dbo].[Status] ([Id], [Name]) VALUES (N'787ee483-aa83-49b6-8d56-cff14140571b', N'C')
+/****** Object:  Index [IX_ItemStatus_ItemId]    Script Date: 26/06/2020 7:10:46 PM ******/
+CREATE NONCLUSTERED INDEX [IX_ItemStatus_ItemId] ON [dbo].[ItemStatus]
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_ItemStatus_StatusId]    Script Date: 26/06/2020 7:10:46 PM ******/
+CREATE NONCLUSTERED INDEX [IX_ItemStatus_StatusId] ON [dbo].[ItemStatus]
+(
+	[StatusId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[ItemStatus]  WITH CHECK ADD  CONSTRAINT [FK_ItemStatus_Items_ItemId] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Items] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[ItemStatus] CHECK CONSTRAINT [FK_ItemStatus_Items_ItemId]
+GO
+ALTER TABLE [dbo].[ItemStatus]  WITH CHECK ADD  CONSTRAINT [FK_ItemStatus_Status_StatusId] FOREIGN KEY([StatusId])
+REFERENCES [dbo].[Status] ([Id])
+GO
+ALTER TABLE [dbo].[ItemStatus] CHECK CONSTRAINT [FK_ItemStatus_Status_StatusId]
+GO
+USE [master]
+GO
+ALTER DATABASE [BackendTest] SET  READ_WRITE 
+GO
